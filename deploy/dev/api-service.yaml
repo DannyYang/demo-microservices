@@ -1,12 +1,16 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: demo-app-service-api
+  labels:
+    app: vote-app-dev
+  name: vote-api-dev
 spec:
-  selector:
-    app: demo-app
-  type: ClusterIP
   ports:
-  - name: http
-    port: 80
-    targetPort: 8080
+    - name: http
+      port: 8081
+      protocol: TCP
+      targetPort: 8081
+  selector:
+    app: vote-api-dev-svc
+  sessionAffinity: None
+  type: ClusterIP

@@ -1,19 +1,38 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: demo-app-api
+  labels:
+    app: vote-app-dev
+  name: vote-api-dev
 spec:
+  replicas: 1
   selector:
     matchLabels:
-      app: demo-app
-  replicas: 1
+      app: vote-api-dev
+      deploymentconfig: vote-api-dev
   template:
     metadata:
       labels:
-        app: demo-app
+        app: vote-api-dev
+        deploymentconfig: vote-api-dev
     spec:
       containers:
-      - name: demo-app
-        image: yjring/demo_app:dev-08e135
-        ports:
-        - containerPort: 8080
+      - image: yjring/demo_app:1.0.0
+        imagePullPolicy: Always
+        resources:
+          requests:
+            cpu: "600m"
+            memory: "1Gi"
+          limits:
+            cpu: "600m"
+            memory: "1Gi"
+        volumeMounts:
+        - mountPath: /app/config/
+          name: app-config
+          readOnly: true
+      restartPolicy: Always
+      volumes:
+      - name: app-config
+        configMap:
+          defaultMode: 420
+          name: vote-api-dev-configmap
