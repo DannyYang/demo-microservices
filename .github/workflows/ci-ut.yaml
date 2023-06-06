@@ -54,6 +54,7 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         context: .
+        dockerfile: backend/Dockerfile
         push: true
         tags: ${{ env.IMAGE_NAME }}:${{ steps.extract_version.outputs.VERSION }}
 
