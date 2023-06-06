@@ -18,6 +18,7 @@ spec:
     spec:
       containers:
       - image: yjring/demo_app:dev-cdac13
+        name: vote-api
         imagePullPolicy: Always
         resources:
           requests:
