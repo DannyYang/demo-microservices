@@ -14,7 +14,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Hello Actions! v2
+          Hello Actions! v3
         </a>
       </header>
     </div>
