@@ -17,7 +17,7 @@ spec:
         deploymentconfig: vote-api-dev
     spec:
       containers:
-      - image: yjring/demo_app:dev-cdac13
+      - image: yjring/demo_app:dev-e10d5e
         name: vote-api
         imagePullPolicy: Always
         resources:
