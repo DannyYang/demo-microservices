@@ -60,7 +60,7 @@ jobs:
 
     - name: Update Kubernetes deployment
       run: |
-        find ./deploy -type f -name "*.yaml" -exec sed -i 's@image: .*@image: '"${{ env.IMAGE_NAME }}:${{ steps.extract_version.outputs.VERSION }}"'@' {} \;
+         find ./deploy/dev -type f -name "*.yaml" -exec sed -i 's@image: .*@image: '"${{ env.IMAGE_NAME }}:${{ steps.extract_version.outputs.VERSION }}"'@' {} \;
 
     - name: Commit changes
       run: |
