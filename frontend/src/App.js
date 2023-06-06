@@ -28,7 +28,6 @@ const App = () => {
 				setOptions(res.data.options);
 			}
 		}
-
 		getOptions();
 	}, []);
 
