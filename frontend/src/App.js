@@ -21,7 +21,6 @@ const App = () => {
 	// 只取一次
 	useEffect(() => {
 		console.log('getOptions * 1');
-
 		const getOptions = async () => {
 			const res = await paramsApi();
 			if (res.status == '200') {
