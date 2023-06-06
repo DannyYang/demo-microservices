@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: demo-ui
-        image: yjring/demo-ui:1.0
+        image: yjring/demo-ui:dev-b8fb27
         ports:
         - containerPort: 80
