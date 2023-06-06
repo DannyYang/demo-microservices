@@ -53,8 +53,8 @@ jobs:
       id: docker_build
       uses: docker/build-push-action@v2
       with:
-        context: .
-        dockerfile: backend/Dockerfile
+        context: backend/
+        dockerfile: Dockerfile
         push: true
         tags: ${{ env.IMAGE_NAME }}:${{ steps.extract_version.outputs.VERSION }}
 
