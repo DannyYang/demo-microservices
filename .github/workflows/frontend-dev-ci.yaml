@@ -34,7 +34,7 @@ jobs:
         node-version: 16
       
     - name: Install Dependencies
-      run: cd frontend && npm ci
+      run: cd frontend && npm install
       
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v1
