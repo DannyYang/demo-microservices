@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 
 const ShowOption = ({   userId, option, records, results, 
                         onVoteChange, 
-                        // onColorChange, 
                         onShowResult }) => {
     const [ selected, setSelected ] = useState({ isSelected: false });
     // const [ disabled, setDisabled ] = useState({ isDisabled: false });

@@ -13,14 +13,11 @@ const App = () => {
 	const [ options, setOptions ] = useState([]);
 	const [ results, setResults ] = useState([]);
 	const [ question, setQuestion ] = useState('');
-	// const [ bgcolor, setBgcolor ] = useState('white');
-	// document.body.style = `background: ${bgcolor}`;
 
 	// 只取一次
 	useEffect(() => {
 		const getOptions = async () => {
 			const res = await paramsApi();
-			console.log(res)
 			if (res.status == 200) {
 				setOptions(res.data.options);
 				setQuestion(res.data.question);
@@ -31,7 +28,6 @@ const App = () => {
 
 	const changeUserHandler = () => {
 		setUserId('');
-		// setBgcolor('white');
 		setResults([]);
 	}
 
@@ -43,17 +39,11 @@ const App = () => {
 		voteApi(newVoteRecords);
 	}
 
-	// const colorChangeHandler = (bgColor) => {
-	// 	setBgcolor(bgColor);
-	// }
 
 	const showResultHandler = async() => {
 		const res = await resultApi();
-	
 		setResults(res.data);
 	}
-	
-	// paramsApi().then(res => console.log(res))
 
 	return (
 		<div id="app">

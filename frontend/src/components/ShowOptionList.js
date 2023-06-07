@@ -6,7 +6,6 @@ import ShowOption from "./ShowOption";
 
 const ShowOptionList = ({   options, userId, results, 
                             onVote, 
-                            // onColorChange, 
                             onShowResult }) => {
 	const [ records, setRecords ] = useState([]);
     
@@ -41,7 +40,6 @@ const ShowOptionList = ({   options, userId, results,
             records={records} 
             results={results}
             onVoteChange={handleVoteChange}
-            // onColorChange={onColorChange} 
             onShowResult={onShowResult} />;
     });
     
