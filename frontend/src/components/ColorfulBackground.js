@@ -23,7 +23,7 @@ function ColorfulBackground({ results, options }) {
         return { mergedArray: array, totalCount: count };
     }, [results, options]);
 
-    return (
+    return results.length != 0 ? (
         <div style={containerStyle}>
             {mergedArray.map(({ bgColor, count, label }, index) => {
                 const percent = count ? Math.floor((count / totalCount) * 100) + '%' : '';
@@ -41,7 +41,7 @@ function ColorfulBackground({ results, options }) {
                 );
             })}
         </div>
-    );
+    ) : null;
 }
 
 export default ColorfulBackground;
