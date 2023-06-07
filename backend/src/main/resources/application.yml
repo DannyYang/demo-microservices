@@ -3,6 +3,11 @@ server:
   servlet:
     context-path: /VoteService
 
+spring:
+  redis:
+    redisson:
+      file: classpath:redisson.yml
+          
 vote:
   question: "這季NBA冠軍賽，你支持哪一隊呢？"
   options:
