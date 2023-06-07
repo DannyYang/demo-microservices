@@ -27,7 +27,7 @@ jobs:
 
       - name: Update API ConfigMap
         run: |
-          kubectl create configmap my-configmap --from-file=backend/src/resources/ --dry-run=client -o yaml > deploy/dev/api-configMap.yml
+          kubectl create configmap my-configmap --from-file=backend/src/main/resources/ --dry-run=client -o yaml > deploy/dev/api-configMap.yml
           cat deploy/dev/api-configMap.yml
 
       - name: Commit and push
