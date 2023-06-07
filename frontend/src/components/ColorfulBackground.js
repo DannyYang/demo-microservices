@@ -1,21 +1,20 @@
-import { useState, useEffect } from 'react'
+import { useState, useMemo } from 'react'
 
 function ColorfulBackground({ results, options }) {
-    const [ mergedArray, setMergedArray] = useState([]);
-    
-    useEffect(() => {
-        if (results.length != 0) {
+    const mergedArray = useMemo(() => {
+        if (results.length !== 0) {
             const array = options.map((option) => {
                 const countObject = results.find((result) => result.optionId === option.optionId);
                 return { ...option, count: countObject?.count || 0 };
             });
-            setMergedArray(array);
+            return array;
         } else {
-            setMergedArray([]);
+            return [];
         }
-    }, [ results ])
+    }, [results, options]);
 
     const totalCount = mergedArray.reduce((sum, option) => sum + option.count, 0);
+    
 
     // const renderedMap = mergedArray.map(({ count, label }) => {
     //     return <tr className='table'>
