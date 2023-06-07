@@ -51,7 +51,7 @@ const BackendApi = {
             "status": "200",
             "message": "OK",
             "data": null,
-            "time": "2023-06-05T15:14:10.613582"
+            "time": "2023-06-05T15:14:10.613583"
         };
     },
     async record(userId) {

@@ -11,4 +11,5 @@ public enum RestStatus {
         this.CODE = CODE;
         this.MESSAGE = MESSAGE;
     }
+    
 }
