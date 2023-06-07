@@ -10,12 +10,10 @@ spec:
   selector:
     matchLabels:
       app: vote-api-dev
-      deploymentconfig: vote-api-dev
   template:
     metadata:
       labels:
         app: vote-api-dev
-        deploymentconfig: vote-api-dev
     spec:
       containers:
       - image: yjring/demo_app:dev-152347
