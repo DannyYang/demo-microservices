@@ -16,7 +16,7 @@ spec:
         app: vote-api-uat
     spec:
       containers:
-      - image: yjring/demo_app:2.0.1
+      - image: yjring/demo_app:1.0.0
         name: vote-api
         imagePullPolicy: Always
         resources:
