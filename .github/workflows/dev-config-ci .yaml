@@ -1,0 +1,39 @@
+name: Update API ConfigMap
+
+on:
+  push:
+    branches:
+      - '**'
+    paths:
+      - 'backend/src/resources/*'
+
+env:
+  ACCESS_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
+
+jobs:
+  update-configmap:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with: 
+          ref: ${{ github.head_ref }}
+          token: ${{ env.ACCESS_TOKEN }}
+
+      - name: Update redisson.yml
+        run: |
+          sed -i 's|redis://127.0.0.1:6379|redis://vote-api-dev-redis:6379|' backend/src/resources/redisson.yml
+
+      - name: Update API ConfigMap
+        run: |
+          kubectl create configmap my-configmap --from-file=backend/src/resources/ --dry-run=client -o yaml > deploy/dev/api-configMap.yml
+          cat deploy/dev/api-configMap.yml
+
+      - name: Commit and push
+        run: |
+          git config --local user.email "PipelineBot"
+          git config --local user.name "PipelineBot"
+          git add ./deploy/dev/api-configMap.yml
+          git commit -m "Update api-configMap.yaml due to changes in /backend/src/resources"
+          git push origin ${{ github.head_ref }}

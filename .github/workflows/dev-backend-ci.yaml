@@ -70,4 +70,4 @@ jobs:
         git config --local user.name "PipelineBot"
         git add ./deploy/dev/api-deployment.yaml
         git commit -m "Update backend image version to ${{ steps.extract_version.outputs.VERSION }}" -a
-        git push origin main
+        git push
