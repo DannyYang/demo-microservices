@@ -1,12 +1,11 @@
+import { throttle } from 'lodash';
 import { useState, useEffect } from 'react';
 
 const ShowOption = ({   userId, option, records, selectedOptionId, 
                         onVoteChange, 
                         onShowResult }) => {
     const [ selected, setSelected ] = useState({ isSelected: false });
-    // const [ disabled, setDisabled ] = useState({ isDisabled: false });
 
-    console.log(selectedOptionId)
     const isRecordExist = records.length > 0 && records[0].userId == userId;
     
     // 只在records改變時才重新渲染
@@ -20,6 +19,7 @@ const ShowOption = ({   userId, option, records, selectedOptionId,
         onVoteChange(event.target.value);
         onShowResult();
     };
+    const throttledHandleOnChange = throttle(handleOnChange, 300);
 
     return (
         <label for={option.optionId} className="option">
@@ -28,7 +28,7 @@ const ShowOption = ({   userId, option, records, selectedOptionId,
                 name="options" 
                 value={option.optionId}
                 id={option.optionId}
-                onChange={handleOnChange}
+                onChange={throttledHandleOnChange}
                 // disabled={!userId}
                 // disabled={isRecordExist}
                 checked={selectedOptionId == option.optionId}>
