@@ -3,7 +3,7 @@ import { debounce } from 'lodash';
 
 const EnterUserInfo = ({ onChangeUser, onLogin }) => {
     const [ userId, setUserId ] = useState('');
-    const debouncedOnChangeUser = debounce(onChangeUser, 300);
+    const debouncedOnChangeUser = debounce(onChangeUser, 200);
 
     const formOnSubmit = (event) => {
         event.preventDefault();
