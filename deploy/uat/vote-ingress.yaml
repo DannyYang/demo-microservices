@@ -7,7 +7,7 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-    - host: 20.204.78.115.sslip.io   #這邊改成你的Cluster1叢集的{IP}.sslip.io
+    - host: 20.198.108.29.sslip.io   #這邊改成你的Cluster2叢集的{IP}.sslip.io
       http:
         paths:
           - pathType: Prefix
