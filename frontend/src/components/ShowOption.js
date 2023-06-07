@@ -22,15 +22,13 @@ const ShowOption = ({   userId, option, records, selectedOptionId,
     const throttledHandleOnChange = throttle(handleOnChange, 300);
 
     return (
-        <label for={option.optionId} className="option">
+        <label htmlFor={option.optionId} className="option">
             <input
                 type="radio"
                 name="options" 
                 value={option.optionId}
                 id={option.optionId}
                 onChange={throttledHandleOnChange}
-                // disabled={!userId}
-                // disabled={isRecordExist}
                 checked={selectedOptionId == option.optionId}>
             </input>
             {option.label}
