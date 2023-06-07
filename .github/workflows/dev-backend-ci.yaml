@@ -6,6 +6,8 @@ on:
       - 'main'
     paths:
       - 'backend/**'
+    paths-ignore:
+      - 'backend/src/main/resources/*'
 
 env:
   IMAGE_NAME: yjring/vote-api

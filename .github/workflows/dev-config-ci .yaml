@@ -5,7 +5,7 @@ on:
     branches:
       - '**'
     paths:
-      - 'backend/src/resources/*'
+      - 'backend/src/main/resources/*'
 
 env:
   ACCESS_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
