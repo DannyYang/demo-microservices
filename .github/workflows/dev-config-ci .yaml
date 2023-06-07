@@ -23,7 +23,7 @@ jobs:
 
       - name: Update redisson.yml
         run: |
-          sed -i 's|redis://127.0.0.1:6379|redis://vote-api-dev-redis:6379|' backend/src/resources/redisson.yml
+          sed -i 's|redis://127.0.0.1:6379|redis://vote-api-dev-redis:6379|' backend/src/main/resources/redisson.yml
 
       - name: Update API ConfigMap
         run: |
