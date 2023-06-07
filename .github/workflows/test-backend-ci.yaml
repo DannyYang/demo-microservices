@@ -1,4 +1,4 @@
-name: DEV Backend CI 
+name: TEST Backend CI 
 
 on:
   push:
@@ -14,7 +14,7 @@ env:
   ACCESS_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
 
 jobs:
-  dev-backend-build-and-push:
+  test-backend-build-and-push:
     runs-on: ubuntu-latest
 
     steps:
