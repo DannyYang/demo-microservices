@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: vote-app-uat
+  name: vote-api-uat
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vote-api-uat
+  template:
+    metadata:
+      labels:
+        app: vote-api-uat
+    spec:
+      containers:
+      - image: yjring/demo_app:dev-152347
+        name: vote-api
+        imagePullPolicy: Always
+        resources:
+          requests:
+            cpu: "600m"
+            memory: "1Gi"
+          limits:
+            cpu: "600m"
+            memory: "1Gi"
+        volumeMounts:
+        - mountPath: /app/config/
+          name: app-config
+          readOnly: true
+      restartPolicy: Always
+      volumes:
+      - name: app-config
+        configMap:
+          defaultMode: 420
+          name: vote-api-uat-configmap
