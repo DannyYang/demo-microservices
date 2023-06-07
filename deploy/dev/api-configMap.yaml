@@ -22,16 +22,16 @@ data:
       options:
         - optionId: "01"
           label: "金塊"
-          bgColor: "#000000"
+          bgColor: "#FFD700"
         - optionId: "02"
           label: "熱火"
-          bgColor: "#000000"
+          bgColor: "#FF4500"
         - optionId: "03"
           label: "湖人"
-          bgColor: "#000000"
+          bgColor: "#552583"
         - optionId: "04"
           label: "勇士"
-          bgColor: "#000000"
+          bgColor: "#006BB6"
 
   redisson.yml: |- 
     singleServerConfig:

@@ -3,7 +3,7 @@ name: DEV frontend CI
 on:
   push:
     branches:
-      - '*'
+      - 'main'
     paths:
       - 'frontend/**'
 
