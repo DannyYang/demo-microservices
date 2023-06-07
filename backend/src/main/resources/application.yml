@@ -8,7 +8,7 @@ vote:
   options:
     - optionId: "01"
       label: "金塊"
-      bgColor: "#FFFF00"
+      bgColor: "#FF0000"
     - optionId: "02"
       label: "熱火"
       bgColor: "#FF4500"
