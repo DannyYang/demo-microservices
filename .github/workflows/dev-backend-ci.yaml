@@ -7,8 +7,8 @@ on:
     paths:
       - 'backend/src/main/java/**'
       - 'backend/pom.xml'
-    paths-ignore:
-      - 'backend/src/main/resources/*'
+      - 'backend/Dockerfile'
+      - 'backend/docker-entrypoint.sh'
 
 env:
   IMAGE_NAME: yjring/vote-api
