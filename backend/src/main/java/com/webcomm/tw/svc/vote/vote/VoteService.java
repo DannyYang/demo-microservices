@@ -19,7 +19,7 @@ public class VoteService {
     private VoteParams voteParams;
     @Autowired
     private CacheService cacheService;
-    @Value("${vote.canDuplicate}")
+    @Value("${vote.canDuplicate:true}")
     private boolean canDuplicate;
     
     public VoteParams getParams() {
