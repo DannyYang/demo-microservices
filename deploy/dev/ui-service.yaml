@@ -2,6 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: demo-ui
+  namespace: default
 spec:
   selector:
     app: demo-ui

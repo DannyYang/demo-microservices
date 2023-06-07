@@ -4,6 +4,7 @@ metadata:
   labels:
     app: vote-app-dev
   name: vote-api-dev-configmap
+  namespace: default
 data:
   application.yml: |- 
     server:

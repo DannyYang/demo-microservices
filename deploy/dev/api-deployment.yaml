@@ -4,6 +4,7 @@ metadata:
   labels:
     app: vote-app-dev
   name: vote-api-dev
+  namespace: default
 spec:
   replicas: 1
   selector:
