@@ -4,6 +4,7 @@ server:
     context-path: /VoteService
 
 vote:
+  canDuplicate: true
   question: "這季NBA冠軍賽，你支持哪一隊呢？"
   options:
     - optionId: "01"

@@ -2,11 +2,13 @@ package com.webcomm.tw.svc.vote.controller;
 
 import com.webcomm.tw.svc.vote.rest.RestResult;
 import com.webcomm.tw.svc.vote.rest.RestStatus;
+import com.webcomm.tw.svc.vote.vote.VoteException;
 import com.webcomm.tw.svc.vote.vote.VoteParams;
 import com.webcomm.tw.svc.vote.vote.VoteRecord;
 import com.webcomm.tw.svc.vote.vote.VoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
@@ -27,7 +29,7 @@ public class VoteController {
     }
 
     @PostMapping(path = "")
-    public RestResult<?> vote(@RequestBody VoteRecord voteRecord) {
+    public RestResult<?> vote(@RequestBody VoteRecord voteRecord) throws VoteException {
         voteService.vote(voteRecord);
         return new RestResult<>(RestStatus.SUCCESS);
     }
