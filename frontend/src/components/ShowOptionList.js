@@ -1,23 +1,17 @@
-import BackendApi from '../api'
+import { recordApi } from '../api'
 
 import { useState, useEffect } from 'react';
 
 import ShowOption from "./ShowOption";
 
-
-const { 
-	params: paramsApi, 
-	record: recordApi, 
-	result: resultApi, 
-	vote: voteApi 
-} = BackendApi;
-
-const ShowOptionList = ({ options, userId, postToVote, onColorChange }) => {
+const ShowOptionList = ({   options, userId, results, 
+                            immediatelyShow,
+                            onVote, 
+                            // onColorChange, 
+                            onShowResult }) => {
 	const [ records, setRecords ] = useState([]);
     
-    // 只在userId改變時才取records
     useEffect(() => {
-        console.log('只在userId改變時才取records')
         getRecords();
     }, [ userId ]);
 
@@ -25,7 +19,6 @@ const ShowOptionList = ({ options, userId, postToVote, onColorChange }) => {
         if (userId) {
             const res = await recordApi(userId);
             if (res.status == '200' && res.data.length > 0) {
-                console.log(res)
                 setRecords([ ...res.data ]);
             }
         }
@@ -33,28 +26,31 @@ const ShowOptionList = ({ options, userId, postToVote, onColorChange }) => {
 
     const handleVoteChange = (optionId) => {
         // 投票後重取
-        postToVote({ userId, optionId });
+        onVote({ userId, optionId });
         getRecords();
     }
 
     if (!userId || !options) {
-        return <></>;
+        return null;
     };
 
     const renderedOptions = options.map((option, index) => {
         return <ShowOption 
-            userId={userId}
-            key={index} 
+            userId={userId} 
+            key={index}  
             option={option}
             records={records} 
+            results={results}
+            // immediatelyShow={immediatelyShow}
             onVoteChange={handleVoteChange}
-            onColorChange={onColorChange} />;
+            // onColorChange={onColorChange} 
+            onShowResult={onShowResult} />;
     });
     
     return (
-        <>
+        <div id="options">
             {renderedOptions}
-        </>
+        </div>
     );
 
 }

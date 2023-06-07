@@ -13,10 +13,12 @@ const EnterUserInfo = ({ onChangeUser, onLogin }) => {
         onChangeUser();
     }
 
-    return <form onSubmit={formOnSubmit}>
-        <input value={userId} onChange={inputOnChange} />
-        <button type="submit">Enter</button>
-    </form>;
+    return (
+        <form id="userInfoForm" onSubmit={formOnSubmit}>
+            <input value={userId} onChange={inputOnChange} />
+            <div><button type="submit">開始投票</button></div>
+        </form>
+    );
 }
 
 export default EnterUserInfo;

@@ -1,15 +1,12 @@
 import { useState, useEffect } from 'react';
 
-/*
-{
-    "optionId": "01",
-    "label": "金塊",
-    "bgColor": "#000000"
-},
-{userId: 'Cherry', optionId: '02'}
-*/
+import ShowOptionResult from './ShowOptionResult';
 
-const ShowOption = ({ userId, option, records, onVoteChange, onColorChange }) => {
+const ShowOption = ({   userId, option, records, results, 
+                        immediatelyShow,
+                        onVoteChange, 
+                        // onColorChange, 
+                        onShowResult }) => {
     const [ selected, setSelected ] = useState(false);
 
     const isOptionSelected = (optionId) => {
@@ -17,17 +14,16 @@ const ShowOption = ({ userId, option, records, onVoteChange, onColorChange }) =>
             .map(r => r.optionId)
             .includes(optionId);
         if (selected) {
-            onColorChange(option.bgColor);
+            // onColorChange(option.bgColor);
         }
         return selected;
     }
 
+    const isRecordExist = records.length > 0 && records[0].userId == userId;
+
     // 只在records改變時才重新渲染
     useEffect(() => {
-        console.log('只在records改變時才重新渲染');
-
-        // 有records才渲染
-        if (records && records.length > 0 && records[0].userId == userId) {
+        if (isRecordExist) {
             setSelected(isOptionSelected(option.optionId));
         } else {
             setSelected(false);
@@ -37,24 +33,27 @@ const ShowOption = ({ userId, option, records, onVoteChange, onColorChange }) =>
     const handleOnChange = (event) => {
         onVoteChange(event.target.value);
         setSelected(isOptionSelected(event.target.value));
+        onShowResult();
     };
 
-    // useEffect(() => {
-    //     console.log('callback')
-    // }, [ selected ]);
-
-    return (<>
-        <label>
+    return (
+        <label className="option">
             <input
                 type="radio"
                 name="options" 
                 value={option.optionId}
                 onChange={handleOnChange}
-                checked={selected}>
+                // disabled={!userId}
+                checked={isRecordExist && selected}>
             </input>
             {option.label}
+            {/* <ShowOptionResult 
+                optionId={option.optionId} 
+                alreadyVoted={isRecordExist} 
+                immediatelyShow={immediatelyShow}
+                results={results} /> */}
         </label>
-    </>);
+    );
 };
 
 export default ShowOption;
