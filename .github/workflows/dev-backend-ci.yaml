@@ -5,7 +5,8 @@ on:
     branches:
       - 'main'
     paths:
-      - 'backend/**'
+      - 'backend/src/main/java/**'
+      - 'backend/pom.xml'
     paths-ignore:
       - 'backend/src/main/resources/*'
 
