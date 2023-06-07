@@ -47,10 +47,12 @@ const App = () => {
 
 	return (
 		<div id="app">
-			<ShowResults onShowResult={showResultHandler} />
+			<ShowResults 
+				onShowResult={showResultHandler} />
 			<h1>{question}</h1>
 			<EnterUserInfo
-				onChangeUser={changeUserHandler} onLogin={loginHanlder} />
+				onChangeUser={changeUserHandler} 
+				onLogin={loginHanlder} />
 			<ShowOptionList 
 				options={options} 
 				userId={userId} 
@@ -59,7 +61,8 @@ const App = () => {
 				// onColorChange={colorChangeHandler}
 				onShowResult={showResultHandler} />
 			<ColorfulBackground 
-				options={options} results={results} />
+				options={options}
+				results={results} />
 		</div>
 	);
 }
