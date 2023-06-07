@@ -19,24 +19,35 @@ const ShowOptionList = ({   options, userId, results,
         if (!userId) {
             return;
         }
+        
         const res = await recordApi(userId);
         if (res.status != '200') {
             return;
         }
+        
+        // 空陣列可展開
         setRecords([ ...res.data ]);
+        
         if (res.data.length > 0) {
             setSelectedOptionId(res.data[res.data.length-1].optionId)
         }
     };
 
     const handleVoteChange = (optionId) => {
+        // 解決 latency 問題, 結果尚未 save 完成, getRecords 會得到的舊資料
+        const originalSelectedOptionId = selectedOptionId;
+        setSelectedOptionId(optionId);
+
         // 投票後重取
-        onVote({ userId, optionId });
-        setSelectedOptionId(optionId)
-        setTimeout(() => {
-            // 解決 latency 問題, 結果尚未 save 完成, getRecords 會得到的舊資料
-            getRecords();
-        }, 200);
+        onVote({ userId, optionId })
+            .then((res) => {
+                if (res.status == '200') {
+                    getRecords();
+                } else {
+                    setSelectedOptionId(originalSelectedOptionId);
+                    alert(res.message);
+                }
+            });
     }
 
     if (!userId || !options) {

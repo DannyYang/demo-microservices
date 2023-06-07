@@ -36,7 +36,7 @@ const App = () => {
 	}
 
 	const postToVoteHandler = (newVoteRecords) => {
-		voteApi(newVoteRecords);
+		return voteApi(newVoteRecords);
 	}
 
 
