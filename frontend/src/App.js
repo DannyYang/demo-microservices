@@ -1,4 +1,3 @@
-// import './App.css';
 import { paramsApi, resultApi, voteApi } from './api'
 
 import { useState, useEffect } from 'react';
@@ -14,7 +13,6 @@ const App = () => {
 	const [ results, setResults ] = useState([]);
 	const [ question, setQuestion ] = useState('');
 
-	// 只取一次
 	useEffect(() => {
 		const getOptions = async () => {
 			const res = await paramsApi();
@@ -39,7 +37,6 @@ const App = () => {
 		return voteApi(newVoteRecords);
 	}
 
-
 	const showResultHandler = async() => {
 		const res = await resultApi();
 		setResults(res.data);
@@ -58,7 +55,6 @@ const App = () => {
 				userId={userId} 
 				results={results} 
 				onVote={postToVoteHandler} 
-				// onColorChange={colorChangeHandler}
 				onShowResult={showResultHandler} />
 			<ColorfulBackground 
 				options={options}

@@ -25,7 +25,6 @@ const ShowOptionList = ({   options, userId, results,
             return;
         }
         
-        // 空陣列可展開
         setRecords([ ...res.data ]);
         
         if (res.data.length > 0) {
@@ -34,11 +33,9 @@ const ShowOptionList = ({   options, userId, results,
     };
 
     const handleVoteChange = (optionId) => {
-        // 解決 latency 問題, 結果尚未 save 完成, getRecords 會得到的舊資料
         const originalSelectedOptionId = selectedOptionId;
         setSelectedOptionId(optionId);
 
-        // 投票後重取
         onVote({ userId, optionId })
             .then((res) => {
                 if (res.status == '200') {
@@ -71,7 +68,6 @@ const ShowOptionList = ({   options, userId, results,
             {renderedOptions}
         </div>
     );
-
 }
 
 export default ShowOptionList;
