@@ -1,4 +1,4 @@
-name: CI for Frontend UAT
+name: UAT Frontend CI
 
 on:
   push:
