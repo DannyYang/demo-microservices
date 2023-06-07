@@ -14,7 +14,7 @@ env:
   ACCESS_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
 
 jobs:
-  build-and-push:
+  dev-backend-build-and-push:
     runs-on: ubuntu-latest
 
     steps:
@@ -65,6 +65,7 @@ jobs:
 
     - name: Commit changes
       run: |
+        git pull
         git config --local user.email "PipelineBot"
         git config --local user.name "PipelineBot"
         git add ./deploy/dev/api-deployment.yaml
