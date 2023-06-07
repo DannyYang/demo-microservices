@@ -2,7 +2,6 @@ package com.webcomm.tw.svc.vote.rest;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
-
 public class RestResult<T> implements Serializable {
 
     private String status;

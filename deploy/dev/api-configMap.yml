@@ -12,6 +12,11 @@ data:
       servlet:
         context-path: /VoteService
 
+    spring:
+      redis:
+        redisson: 
+          file: file:///app/config/redisson.yml
+
     vote:
       question: "這季NBA冠軍賽，你支持哪一隊呢？"
       options:
@@ -27,6 +32,18 @@ data:
         - optionId: "04"
           label: "勇士"
           bgColor: "#000000"
+
+  redisson.yml: |- 
+    singleServerConfig:
+      address: "redis://vote-api-dev-redis:6379"
+      database: 0
+      connectionMinimumIdleSize: 5
+      connectionPoolSize: 200
+      connectTimeout: 10000
+      timeout: 20000
+      password: dev-redis
+    threads: 8
+    nettyThreads: 32
 
   logback-spring.xml: |- 
     <?xml version="1.0" encoding="UTF-8"?>
