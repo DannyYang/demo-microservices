@@ -62,4 +62,4 @@ jobs:
         git config --local user.name "PipelineBot"
         git add ./deploy/uat/ui-deployment.yaml
         git commit -m "Update frontend image version to ${{ steps.extract_version.outputs.VERSION }}" -a
-        git push origin main
+        git push origin feature-test
