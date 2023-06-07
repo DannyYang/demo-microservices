@@ -18,7 +18,7 @@ const App = () => {
 	const [ bgcolor, setBgcolor ] = useState('white');
 	document.body.style = `background: ${bgcolor}`;
 
-	// 只取一次
+	// 只取一次 
 	useEffect(() => {
 		console.log('getOptions * 1');
 		const getOptions = async () => {
@@ -52,7 +52,7 @@ const App = () => {
 	}
 	
 	return (<div>
-		<button onClick={onClickResult}>查看結果</button>
+		<button onClick={onClickResult}>查看結果 test</button>
 		<EnterUserInfo onChangeUser={changeUserHandler} onLogin={loginHanlder} />
 		<ShowOptionList options={options} userId={userId} postToVote={postToVote} onColorChange={colorChangeHandler}/>
 	</div>);
