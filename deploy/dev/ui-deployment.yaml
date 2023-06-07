@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: demo-ui
+  name: vote-ui
   namespace: default
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: demo-ui
+      app: vote-ui
   template:
     metadata:
       labels:
-        app: demo-ui
+        app: vote-ui
     spec:
       containers:
-      - name: demo-ui
+      - name: vote-ui
         image: yjring/demo-ui:dev-3cfdac
         ports:
         - containerPort: 80

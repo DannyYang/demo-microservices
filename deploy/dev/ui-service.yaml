@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: demo-ui
+  name: vote-ui-svc
   namespace: default
 spec:
   selector:
-    app: demo-ui
+    app: vote-ui
   type: ClusterIP
   ports:
     - protocol: TCP

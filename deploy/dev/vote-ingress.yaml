@@ -15,3 +15,10 @@ spec:
                 name: vote-api-dev-svc
                 port:
                   number: 8081
+          - pathType: Prefix
+            path: /Home
+            backend:
+              service:
+                name: vote-ui-svc
+                port:
+                  number: 80
