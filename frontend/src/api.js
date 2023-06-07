@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 const isTest = false;
+const isError = false;
 const service = '/VoteService/vote';
 let tempRecordData = {};
 
@@ -50,15 +51,23 @@ export async function voteApi(vote) {
         return axios.post(getApi(''), vote)
             .then(res => res.data);
     }
-    tempRecordData = {
-        ...tempRecordData,
-        [vote.userId]: [vote]
-    };
+    if (!isError) {
+        tempRecordData = {
+            ...tempRecordData,
+            [vote.userId]: [vote]
+        };
+        return {
+            "status": "200",
+            "message": "OK",
+            "data": null,
+            "time": "2023-06-05T15:14:10.613582"
+        };
+    }
     return {
-        "status": "200",
-        "message": "OK",
+        "status": "V001",
+        "message": "不可重複投票",
         "data": null,
-        "time": "2023-06-05T15:14:10.613582"
+        "time": null
     };
 };
 
