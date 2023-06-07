@@ -2,7 +2,7 @@ name: UAT backend CI
 
 on:
   push:
-    branches: 
+    tags:
       - '*'
     paths:
       - 'backend/**'
