@@ -1,57 +1,39 @@
 import { useState, useEffect } from 'react';
 
-import ShowOptionResult from './ShowOptionResult';
-
-const ShowOption = ({   userId, option, records, results, 
-                        immediatelyShow,
+const ShowOption = ({   userId, option, records, selectedOptionId, 
                         onVoteChange, 
-                        // onColorChange, 
                         onShowResult }) => {
-    const [ selected, setSelected ] = useState(false);
+    const [ selected, setSelected ] = useState({ isSelected: false });
+    // const [ disabled, setDisabled ] = useState({ isDisabled: false });
 
-    const isOptionSelected = (optionId) => {
-        const selected = Object.values(records)
-            .map(r => r.optionId)
-            .includes(optionId);
-        if (selected) {
-            // onColorChange(option.bgColor);
-        }
-        return selected;
-    }
-
+    console.log(selectedOptionId)
     const isRecordExist = records.length > 0 && records[0].userId == userId;
-
+    
     // 只在records改變時才重新渲染
     useEffect(() => {
         if (isRecordExist) {
-            setSelected(isOptionSelected(option.optionId));
-        } else {
-            setSelected(false);
+            onShowResult();
         }
     }, [ records ]);
 
     const handleOnChange = (event) => {
         onVoteChange(event.target.value);
-        setSelected(isOptionSelected(event.target.value));
         onShowResult();
     };
 
     return (
-        <label className="option">
+        <label for={option.optionId} className="option">
             <input
                 type="radio"
                 name="options" 
                 value={option.optionId}
+                id={option.optionId}
                 onChange={handleOnChange}
                 // disabled={!userId}
-                checked={isRecordExist && selected}>
+                // disabled={isRecordExist}
+                checked={selectedOptionId == option.optionId}>
             </input>
             {option.label}
-            {/* <ShowOptionResult 
-                optionId={option.optionId} 
-                alreadyVoted={isRecordExist} 
-                immediatelyShow={immediatelyShow}
-                results={results} /> */}
         </label>
     );
 };

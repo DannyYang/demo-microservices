@@ -5,29 +5,38 @@ import { useState, useEffect } from 'react';
 import ShowOption from "./ShowOption";
 
 const ShowOptionList = ({   options, userId, results, 
-                            immediatelyShow,
                             onVote, 
-                            // onColorChange, 
                             onShowResult }) => {
 	const [ records, setRecords ] = useState([]);
+    const [ selectedOptionId, setSelectedOptionId ] = useState('');
     
     useEffect(() => {
+        setSelectedOptionId('');
         getRecords();
     }, [ userId ]);
 
     const getRecords = async () => {
-        if (userId) {
-            const res = await recordApi(userId);
-            if (res.status == '200' && res.data.length > 0) {
-                setRecords([ ...res.data ]);
-            }
+        if (!userId) {
+            return;
+        }
+        const res = await recordApi(userId);
+        if (res.status != '200') {
+            return;
+        }
+        setRecords([ ...res.data ]);
+        if (res.data.length > 0) {
+            setSelectedOptionId(res.data[res.data.length-1].optionId)
         }
     };
 
     const handleVoteChange = (optionId) => {
         // 投票後重取
         onVote({ userId, optionId });
-        getRecords();
+        setSelectedOptionId(optionId)
+        setTimeout(() => {
+            // 解決 latency 問題, 結果尚未 save 完成, getRecords 會得到的舊資料
+            getRecords();
+        }, 200);
     }
 
     if (!userId || !options) {
@@ -39,11 +48,10 @@ const ShowOptionList = ({   options, userId, results,
             userId={userId} 
             key={index}  
             option={option}
+            selectedOptionId={selectedOptionId}
             records={records} 
             results={results}
-            // immediatelyShow={immediatelyShow}
             onVoteChange={handleVoteChange}
-            // onColorChange={onColorChange} 
             onShowResult={onShowResult} />;
     });
     
