@@ -1,5 +1,6 @@
 package com.webcomm.tw.svc.vote.vote;
 
+
 public class VoteOption {
 
     private String optionId;
