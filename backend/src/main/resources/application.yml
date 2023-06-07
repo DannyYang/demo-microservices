@@ -3,6 +3,11 @@ server:
   servlet:
     context-path: /VoteService
 
+spring:
+  redis:
+    redisson:
+      file: classpath:redisson.yml
+          
 vote:
   canDuplicate: true
   question: "這季NBA冠軍賽，你支持哪一隊呢？"
