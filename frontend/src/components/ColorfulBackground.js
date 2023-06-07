@@ -16,13 +16,34 @@ function ColorfulBackground({ results, options }) {
     }, [ results ])
 
     const totalCount = mergedArray.reduce((sum, option) => sum + option.count, 0);
+
+    // const renderedMap = mergedArray.map(({ count, label }) => {
+    //     return <tr className='table'>
+    //         {label}
+    //         {( Math.floor((count / totalCount) * 100) + '%')}
+    //     </tr>;
+    // });
+    // return (<table><tbody>{renderedMap}</tbody></table>);
+
     return (
-        <div style={{ position:'absolute', left: '0px', display: 'flex', width: '100%', height: '100%' }}>
-            {mergedArray.map(({ bgColor, count }, index) => {
-                    return <div key={index} style={{
+        <div style={{ position: 'relative', 
+                        display: 'flex', 
+                        // flexDirection: 'column', 
+                        width: '100%', height: '50vh' }}>
+            {mergedArray.map(({ bgColor, count, label }, index) => {
+                    return (
+                    <div key={index} style={{
                         backgroundColor: bgColor,
-                        flexBasis: `${(count / totalCount) * 100}%`,
-                    }}>{count || ''}</div>
+                        flexBasis: `${(count / totalCount) * 100}%`, }}>
+                        <div style={{ 
+                                backgroundColor: 'white', 
+                                textAlign: 'center',
+                            }}>
+                            {count ? ( Math.floor((count / totalCount) * 100) + '%') : ''}
+                            {count == 0 ? '' : label}
+                        </div>
+                    </div>
+                    )
                 })
             }
         </div>

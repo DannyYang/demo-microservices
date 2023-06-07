@@ -5,7 +5,6 @@ import { useState, useEffect } from 'react';
 import ShowOption from "./ShowOption";
 
 const ShowOptionList = ({   options, userId, results, 
-                            immediatelyShow,
                             onVote, 
                             // onColorChange, 
                             onShowResult }) => {
@@ -41,7 +40,6 @@ const ShowOptionList = ({   options, userId, results,
             option={option}
             records={records} 
             results={results}
-            // immediatelyShow={immediatelyShow}
             onVoteChange={handleVoteChange}
             // onColorChange={onColorChange} 
             onShowResult={onShowResult} />;

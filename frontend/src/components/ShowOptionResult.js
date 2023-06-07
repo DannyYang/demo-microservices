@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 const ShowOptionResult = ({ optionId, alreadyVoted, results, immediatelyShow }) => {
-    const [hasVoted, setHasVoted] = useState(false);
+    const [hasVoted, setHasVoted] = useState({ voted: false });
     const [count, setCount] = useState(0);
     
     useEffect(() => {
@@ -13,12 +13,11 @@ const ShowOptionResult = ({ optionId, alreadyVoted, results, immediatelyShow }) 
     }, [ results ]);
 
     useEffect(() => {
-        setHasVoted(false);
-        setHasVoted(alreadyVoted);
+        setHasVoted({voted: alreadyVoted});
     }, [ alreadyVoted ]);
     
     return (
-        <span>{immediatelyShow || hasVoted ? count: ''}</span>
+        <span>{immediatelyShow || hasVoted.voted ? count: ''}</span>
     );
 }
 

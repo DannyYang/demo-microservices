@@ -12,7 +12,6 @@ const App = () => {
 	const [ userId, setUserId ] = useState('');
 	const [ options, setOptions ] = useState([]);
 	const [ results, setResults ] = useState([]);
-    const [ immediatelyShow, setImmediatelyShow ] = useState(false);
 	const [ question, setQuestion ] = useState('');
 	// const [ bgcolor, setBgcolor ] = useState('white');
 	// document.body.style = `background: ${bgcolor}`;
@@ -33,7 +32,6 @@ const App = () => {
 	const changeUserHandler = () => {
 		setUserId('');
 		// setBgcolor('white');
-		setImmediatelyShow(false);
 		setResults([]);
 	}
 
@@ -51,9 +49,8 @@ const App = () => {
 
 	const showResultHandler = async() => {
 		const res = await resultApi();
-		
+	
 		setResults(res.data);
-		setImmediatelyShow(true);
 	}
 	
 	// paramsApi().then(res => console.log(res))
@@ -65,12 +62,14 @@ const App = () => {
 			<EnterUserInfo
 				onChangeUser={changeUserHandler} onLogin={loginHanlder} />
 			<ShowOptionList 
-				options={options} userId={userId} 
-				results={results} immediatelyShow={immediatelyShow}
+				options={options} 
+				userId={userId} 
+				results={results} 
 				onVote={postToVoteHandler} 
 				// onColorChange={colorChangeHandler}
 				onShowResult={showResultHandler} />
-			<ColorfulBackground options={options} results={results} />
+			<ColorfulBackground 
+				options={options} results={results} />
 		</div>
 	);
 }
