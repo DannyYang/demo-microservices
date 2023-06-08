@@ -1,4 +1,4 @@
-name: Update API ConfigMap
+name: Update Dev API ConfigMap
 
 on:
   push:
