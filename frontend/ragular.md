@@ -46,11 +46,19 @@ body範例
     "optionId": "01"
 }
 Rs範例
+1.
 {
     "status": "200",
     "message": "OK",
     "data": null,
     "time": "2023-06-05T15:14:10.613582"
+}
+2.
+{
+    "status": "V001",
+    "message": "不可重複投票",
+    "data": null,
+    "time": null
 }
 
 3. GET {{domain}}//VoteService/vote/records?userId={{userId}}
