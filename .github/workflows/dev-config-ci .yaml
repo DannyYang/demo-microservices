@@ -3,7 +3,7 @@ name: Update API ConfigMap
 on:
   push:
     branches:
-      - '**'
+      - 'main'
     paths:
       - 'backend/src/main/resources/*'
 
