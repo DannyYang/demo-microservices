@@ -46,8 +46,17 @@ const ShowOptionList = ({   options, userId, results,
                 }
             });
 
-        onShowResult(); // FIXME resultApi 會被子元件呼叫四次
+        onShowResult();
     }
+    
+    useEffect(() => {
+        const isRecordExist = records.length > 0 && records[0].userId == userId;
+
+        if (isRecordExist) {
+            onShowResult();
+        }
+    }, [ records ]);
+
 
     if (!userId || !options) {
         return null;
@@ -55,14 +64,10 @@ const ShowOptionList = ({   options, userId, results,
 
     const renderedOptions = options.map((option, index) => {
         return <ShowOption 
-            userId={userId} 
             key={index}  
             option={option}
             selectedOptionId={selectedOptionId}
-            records={records} 
-            results={results}
-            onVoteChange={handleVoteChange}
-            onShowResult={() => {}} />; // FIXME resultApi 會被子元件呼叫四次
+            onVoteChange={handleVoteChange} />;
     });
     
     return (
