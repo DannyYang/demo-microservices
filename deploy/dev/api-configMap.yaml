@@ -3,7 +3,7 @@ data:
   application.yml: "server:\n  port: 8081\n  servlet:\n    context-path: /VoteService\n\nspring:\n
     \ redis:\n    redisson:\n      file: file:///app/config/redisson.yml\n          \nvote:\n
     \ question: \"這季NBA冠軍賽，你支持哪一隊呢？\"\n  options:\n    - optionId: \"01\"\n      label:
-    \"金塊\"\n      bgColor: \"#FFF100\"\n    - optionId: \"02\"\n      label: \"熱火\"\n
+    \"金塊\"\n      bgColor: \"#FF0100\"\n    - optionId: \"02\"\n      label: \"熱火\"\n
     \     bgColor: \"#FF4500\"\n    - optionId: \"03\"\n      label: \"湖人\"\n      bgColor:
     \"#552583\"\n    - optionId: \"04\"\n      label: \"勇士\"\n      bgColor: \"#006BB6\"\n
     \     "
