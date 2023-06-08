@@ -16,7 +16,6 @@ public class VoteService {
 
     @Autowired 
     private VoteParams voteParams;
-    
     @Autowired
     private CacheService cacheService;
     
@@ -33,7 +32,7 @@ public class VoteService {
     public List<VoteRecord> getRecords(String userId) {
         return getRecords()
                 .stream()
-                .filter(record -> userId.equals(((VoteRecord)record).getUserId()))
+                .filter(record -> userId.equals(record.getUserId()))
                 .collect(Collectors.toList());
     }
 
@@ -49,7 +48,7 @@ public class VoteService {
         for(VoteOption option : getParams().getOptions()){
             long count = records
                     .stream()
-                    .filter(record -> option.getOptionId().equals(((VoteRecord)record).getOptionId()))
+                    .filter(record -> option.getOptionId().equals(record.getOptionId()))
                     .count();
             result.add(new VoteResult(option.getOptionId(), count));
         }
