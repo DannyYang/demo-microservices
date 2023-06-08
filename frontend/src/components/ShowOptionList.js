@@ -45,6 +45,8 @@ const ShowOptionList = ({   options, userId, results,
                     alert(res.message);
                 }
             });
+
+        onShowResult(); // FIXME resultApi 會被子元件呼叫四次
     }
 
     if (!userId || !options) {
@@ -60,7 +62,7 @@ const ShowOptionList = ({   options, userId, results,
             records={records} 
             results={results}
             onVoteChange={handleVoteChange}
-            onShowResult={onShowResult} />;
+            onShowResult={() => {}} />; // FIXME resultApi 會被子元件呼叫四次
     });
     
     return (

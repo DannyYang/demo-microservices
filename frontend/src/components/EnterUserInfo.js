@@ -18,7 +18,7 @@ const EnterUserInfo = ({ onChangeUser, onLogin }) => {
 
     return (
         <form id="userInfoForm" onSubmit={formOnSubmit}>
-            <input value={userId} onChange={inputOnChange} />
+            <input value={userId} onChange={inputOnChange} placeholder='請輸入您的暱稱' />
             <div><button type="submit">開始投票</button></div>
         </form>
     );
