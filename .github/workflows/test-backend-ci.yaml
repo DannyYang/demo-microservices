@@ -5,7 +5,11 @@ on:
     branches:
       - 'feature-test'
     paths:
-      - 'backend/**'
+      - 'backend/src/main/java/**'
+      - 'backend/pom.xml'
+      - 'backend/Dockerfile'
+      - 'backend/docker-entrypoint.sh'
+
 
 env:
   IMAGE_NAME: yjring/vote-api
