@@ -3,9 +3,13 @@ name: TEST Backend CI
 on:
   push:
     branches:
-      - 'feature-test'
+      - 'feature-api-demo'
     paths:
-      - 'backend/**'
+      - 'backend/src/main/java/**'
+      - 'backend/pom.xml'
+      - 'backend/Dockerfile'
+      - 'backend/docker-entrypoint.sh'
+
 
 env:
   IMAGE_NAME: yjring/vote-api
@@ -25,7 +29,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
       with: 
-        ref: main
+        ref: feature-test
         token: ${{ secrets.MY_GITHUB_TOKEN }}
       
     - name: Set up JDK 1.11
@@ -70,4 +74,4 @@ jobs:
         git config --local user.name "PipelineBot"
         git add ./deploy/uat/api-deployment.yaml
         git commit -m "Update backend image version to ${{ steps.extract_version.outputs.VERSION }}" -a
-        git push origin main
+        git push 
