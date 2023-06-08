@@ -14,9 +14,11 @@ spec:
     metadata:
       labels:
         app: vote-api-dev
+      annotations:
+        vote-config-version: 478f24
     spec:
       containers:
-      - image: yjring/vote-api:dev-054e86
+      - image: yjring/vote-api:dev-00f23c
         name: vote-api
         imagePullPolicy: Always
         resources:

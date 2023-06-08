@@ -2,18 +2,20 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: vote-app-uat
-  name: vote-api-uat
+    app: vote-app-dev
+  name: vote-api-dev
   namespace: default
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: vote-api-uat
+      app: vote-api-dev
   template:
     metadata:
       labels:
-        app: vote-api-uat
+        app: vote-api-dev
+      annotations:
+        vote-config-version: 478f24
     spec:
       containers:
       - image: yjring/vote-api:dev-f7e124
@@ -35,4 +37,4 @@ spec:
       - name: app-config
         configMap:
           defaultMode: 420
-          name: vote-api-uat-configmap
+          name: vote-api-dev-configmap

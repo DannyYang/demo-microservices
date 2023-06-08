@@ -12,6 +12,6 @@ spec:
             path: /VoteService
             backend:
               service:
-                name: vote-api-uat-svc
+                name: vote-api-dev-svc
                 port:
                   number: 8081
