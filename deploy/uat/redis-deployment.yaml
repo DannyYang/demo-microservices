@@ -3,16 +3,16 @@ kind: Deployment
 metadata:
   name: redis-deployment
   labels:
-    app: vote-api-uat-redis
+    app: vote-api-dev-redis
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: vote-api-uat-redis
+      app: vote-api-dev-redis
   template:
     metadata:
       labels:
-        app: vote-api-uat-redis
+        app: vote-api-dev-redis
     spec:
       containers:
       - name: redis
@@ -20,7 +20,7 @@ spec:
         imagePullPolicy: Always
         args:
         - -c
-        - redis-server /usr/local/etc/redis/redis.conf --requirepass uat-redis
+        - redis-server /usr/local/etc/redis/redis.conf --requirepass dev-redis
         command:
         - /bin/sh
         resources:
@@ -40,4 +40,4 @@ spec:
       - name: app-config
         configMap:
           defaultMode: 420
-          name: vote-api-uat-redis-configmap
+          name: vote-api-dev-redis-configmap

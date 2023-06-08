@@ -2,8 +2,8 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   labels:
-    app: vote-app-uat
-  name: vote-api-uat-redis-configmap
+    app: vote-app-dev
+  name: vote-api-dev-redis-configmap
   namespace: default
 data:
   redis.conf: |-

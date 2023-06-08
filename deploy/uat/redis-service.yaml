@@ -3,7 +3,7 @@ kind: Service
 metadata:
   labels:
     app: vote-app-uat
-  name: vote-api-uat-redis
+  name: vote-api-dev-redis
   namespace: default
 spec:
   ports:
@@ -12,6 +12,6 @@ spec:
       protocol: TCP
       targetPort: 6379
   selector:
-    app: vote-api-uat-redis
+    app: vote-api-dev-redis
   sessionAffinity: None
   type: ClusterIP
