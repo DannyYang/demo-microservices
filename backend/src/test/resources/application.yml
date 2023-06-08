@@ -7,21 +7,21 @@ spring:
   redis:
     redisson:
       file: classpath:redisson.yml
-          
+      
 vote:
-  canDuplicate: true
+  canDuplicate: false
   question: "這季NBA冠軍賽，你支持哪一隊呢？"
   options:
     - optionId: "01"
       label: "金塊"
-      bgColor: "#FF0000"
+      bgColor: "#000000"
     - optionId: "02"
       label: "熱火"
-      bgColor: "#FF4500"
+      bgColor: "#000000"
     - optionId: "03"
       label: "湖人"
-      bgColor: "#552583"
+      bgColor: "#000000"
     - optionId: "04"
       label: "勇士"
-      bgColor: "#006BB6"
+      bgColor: "#000000"
       
