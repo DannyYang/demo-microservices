@@ -21,7 +21,7 @@ jobs:
           ref: ${{ github.head_ref }}
           token: ${{ env.ACCESS_TOKEN }}
 
-      - name: Update redisson.yml
+      - name: Update redis config
         run: |
           sed -i 's|redis://127.0.0.1:6379|redis://vote-api-dev-redis:6379|' backend/src/main/resources/redisson.yml
           sed -i 's|file: classpath:redisson.yml|file: file:///app/config/redisson.yml|' backend/src/main/resources/application.yml
@@ -29,12 +29,16 @@ jobs:
       - name: Update API ConfigMap
         run: |
           kubectl create configmap vote-api-dev-configmap -n default --from-file=backend/src/main/resources/ --dry-run=client -o yaml > deploy/dev/api-configMap.yaml
-          cat deploy/dev/api-configMap.yaml
+      
+      - name: Update Deployment with Commit SHA
+        run: |
+          COMMIT_SHA=$(git rev-parse --short=6 HEAD)
+          sed -i 's|vote-config-version:.*|vote-config-version: '$COMMIT_SHA'|' deploy/dev/api-deployment.yaml
 
       - name: Commit and push
         run: |
           git config --local user.email "PipelineBot"
           git config --local user.name "PipelineBot"
-          git add ./deploy/dev/api-configMap.yaml
+          git add ./deploy/dev/api-configMap.yaml ./deploy/dev/api-deployment.yaml
           git commit -m "Update api-configMap.yaml due to changes in /backend/src/resources"
           git push origin ${{ github.head_ref }}
