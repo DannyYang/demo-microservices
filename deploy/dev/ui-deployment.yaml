@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
       - name: vote-ui
-        image: yjring/vote-ui:dev-de387f
+        image: yjring/vote-ui:dev-af5f9c
         ports:
         - containerPort: 80
