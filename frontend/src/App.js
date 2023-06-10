@@ -1,6 +1,7 @@
 import { paramsApi, resultApi, voteApi } from './api'
 
 import { useState, useEffect } from 'react';
+import { Typography } from '@mui/material';
 
 import EnterUserInfo from './components/EnterUserInfo';
 import ShowOptionList from './components/ShowOptionList';
@@ -57,7 +58,11 @@ const App = () => {
 			<div id="app">
 				<ShowResults 
 					onShowResult={showResultHandler} />
-				<h1>{question}</h1>
+				<Typography 
+					mt={2} mb={2}
+					variant="h4" component="h1">
+					{question}
+				</Typography>
 				<EnterUserInfo
 					onChangeUser={changeUserHandler} 
 					onLogin={loginHanlder} />
