@@ -36,14 +36,15 @@ function ColorfulBackground({ results, options, isResultApiSuccess }) {
                 color: bgColor
             };
         });
-
+    
     const labelArray = renderedArray
-        .map(({ label, percentage, color }) => {
+        .map(({ label, percentage, color }, index) => {
+            const percent = percentage.toFixed(2);
             return (
                 <span key={index} style={{ 
                         ...labelStyle, 
                         borderLeft: '7px solid ' + color }}>
-                    {label} {percentage.toFixed(2)}%
+                    {label} {Number.isInteger(Number(percent)) ? Math.floor(percent) : percent}%
                 </span>
             );
         });
