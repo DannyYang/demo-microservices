@@ -40,7 +40,7 @@ function ColorfulBackground({ results, options, isResultApiSuccess }) {
     const labelArray = renderedArray
         .map(({ label, percentage, color }) => {
             return (
-                <span style={{ 
+                <span key={index} style={{ 
                         ...labelStyle, 
                         borderLeft: '7px solid ' + color }}>
                     {label} {percentage.toFixed(2)}%
