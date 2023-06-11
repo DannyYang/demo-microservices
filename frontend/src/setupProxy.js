@@ -1,6 +1,6 @@
 const { createProxyMiddleware } = require('http-proxy-middleware');
 
-const isLocalTest = true;
+const isLocalTest = false;
 
 module.exports = function(app) {
   app.use(
