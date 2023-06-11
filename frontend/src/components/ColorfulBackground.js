@@ -12,7 +12,7 @@ const labelStyle = {
     textAlign: 'center'
 };
 
-function ColorfulBackground({ results, options }) {
+function ColorfulBackground({ results, options, isResultApiSuccess }) {
     const { mergedArray, totalCount } = useMemo(() => {
         const array = options.map((option) => {
             const countObject = results.find((result) => result.optionId === option.optionId);
@@ -22,6 +22,10 @@ function ColorfulBackground({ results, options }) {
         const count = array.reduce((sum, option) => sum + option.count, 0);
         return { mergedArray: array, totalCount: count };
     }, [results, options]);
+
+    if (!isResultApiSuccess) {
+        return <div>取得投票結果發生錯誤</div>;
+    }
 
     return results.length != 0 ? (
         <div style={containerStyle}>
