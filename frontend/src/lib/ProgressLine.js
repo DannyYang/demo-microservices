@@ -30,7 +30,7 @@ const ProgressLine = ({
       // Set a new array of percentage widths based on the props
       setWidths(
         visualParts.map(item => {
-          return item.percentage;
+          return item.percentage + '%';
         })
       );
     });

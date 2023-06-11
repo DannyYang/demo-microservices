@@ -29,7 +29,7 @@ function ColorfulBackground({ results, options, isResultApiSuccess }) {
     const renderedArray = mergedArray
         .filter(({ count }) => count > 0)
         .map(({ bgColor, count, label }) => {
-            const percentage = count ? Math.floor((count / totalCount) * 100) + '%' : '';
+            const percentage = count ? (count / totalCount) * 100 : 0;
             return {
                 label,
                 percentage,
@@ -43,7 +43,7 @@ function ColorfulBackground({ results, options, isResultApiSuccess }) {
                 <span style={{ 
                         ...labelStyle, 
                         borderLeft: '7px solid ' + color }}>
-                    {label} {percentage}
+                    {label} {percentage.toFixed(2)}%
                 </span>
             );
         });
